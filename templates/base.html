@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IAI Cameroon - Plateforme de Stages Intelligente</title>
+    
+    <!-- Styles -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body class="" x-data="{ isMenuOpen: false, activeTestimonial: 0 }">
+    <!-- Navigation -->
+    <nav class="bg-red-200 backdrop-blur-md  w-full z-50 shadow-lg" data-aos="fade-down">
+        <div class="bg-red/200 container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <a href="#" class="flex items-center space-x-2" data-aos="fade-right">
+                    <img src="logo.png" alt="Logo IAI" class="h-10 w-10 rounded-full">
+                    <span class="text-2xl font-bold text-white">IAI Stages</span>
+                </a>
+                
+                <!-- Desktop Menu -->
+                {% block navigation %}
+
+
+                {% endblock %}
+
+                <!-- Mobile Menu -->
+                <button @click="isMenuOpen = !isMenuOpen" class="md:hidden text-white">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button> 
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div class="md:hidden bg-white/5 backdrop-blur-lg" x-show="isMenuOpen" x-collapse>
+            <div class="px-6 py-4 space-y-4">
+                <a href="#entreprises" class="block text-white">Entreprises</a>
+                <a href="#stages" class="block text-white">Stages</a>
+                <a href="#contact" class="block bg-cyan-500 px-4 py-2 rounded-full text-center">Connexion</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="py-0">
+        {% block content %}
+
+
+        {% endblock %}
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script>
+        // Initialisation AOS
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 50,
+            easing: 'ease-in-out-quad'
+        });
+
+        // Optimisation chargement images
+        document.addEventListener('DOMContentLoaded', () => {
+            const images = document.querySelectorAll('img');
+            images.forEach(img => {
+                img.loading = 'lazy';
+                img.decoding = 'async';
+            });
+        });
+    </script>
+</body>
+</html>
