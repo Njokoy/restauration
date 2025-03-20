@@ -1,0 +1,118 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+
+
+{% block navigation %}
+    <!-- Desktop Menu -->
+    <div class=" md:flex space-x-8 items-center">
+        <a href="#acceuil" class="text-white hover:text-cyan-300 transition-colors" data-aos="fade-down" data-aos-delay="100">Entreprises</a>
+        <a href="{% url 'menu' %}" class="text-white hover:text-cyan-300 transition-colors" data-aos="fade-down" data-aos-delay="100"> menue </a>
+        <a href="{% url 'reservation_create' %}" class="text-white hover:text-cyan-300 transition-colors" data-aos="fade-down" data-aos-delay="100"> reservation </a>
+        <a href="#temoignages" class="text-white hover:text-cyan-300 transition-colors" data-aos="fade-down" data-aos-delay="300">Témoignages</a>
+
+    </div>
+{% endblock %}
+
+{% block content %}
+<section class=" -my-10  w-full bg-zinc-100 flex flex-col items-center justify-center" id="acceuil">
+    
+    <div class="grid  max-md:flex max-md:flex-col grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 grid-rows-3 gap-6">
+        <div class="col-span-1 sm:col-span-2 md:col-span-2 lg:col-span-2 row-span-3 col-start-1 sm:col-start-1 md:col-start-2 lg:col-start-3 row-start-1">
+            <div class="  grid grid-rows-2 grid-cols-2 w-84 h-84 max-md:rotate relative min-[1452px]:rotate-45  top-28 -z-1 p-1 rounded-md">
+                <div class="bg-[url(../static/img/eru.jpg)] bg-cover bg-center max-[454px]:w-32 max-[454px]:h-32 w-40 h-40 bg-blue-100 rounded-md m-1 border-4 border-orange-500" data-aos="fade-down" data-aos-delay="100"></div>
+                <div class="bg-[url(../static/img/Okok.jpg)] bg-cover bg-center max-[454px]:w-32 max-[454px]:h-32 w-40 h-40 bg-blue-100 rounded-md m-1 border-4 border-orange-500" data-aos="fade-left" data-aos-delay="200"></div>
+                <div class="bg-[url(../static/img/saute.jpg)] bg-cover bg-center max-[454px]:w-32 max-[454px]:h-32 w-40 h-40 bg-blue-100 rounded-md m-1 border-4 border-orange-500" data-aos="fade-up" data-aos-delay="300"></div>
+                <div class="bg-[url(../static/img/taro.jpg)] bg-cover bg-center max-[454px]:w-32 max-[454px]:h-32  w-40 h-40 bg-blue-100 rounded-md m-1 border-4 border-orange-500" data-aos="fade-left" data-aos-delay="400"></div>
+            </div>
+        </div>
+        <div class="col-span-1 sm:col-span-2 md:col-span-2 lg:col-span-2 col-start-1 row-start-2  relative top-28">
+            <div class="relative inline-flex items-center justify-center gap-4 group">
+                <div class="absolute inset-0 duration-1000 opacity-60 transition-all bg-gradient-to-r from-indigo-500 via-pink-500 to-yellow-400 rounded-xl blur-lg filter group-hover:opacity-100 group-hover:duration-200"></div>
+                <a role="button" class="group relative inline-flex items-center justify-center text-base rounded-xl bg-orange-500 px-8 py-3 font-semibold text-white transition-all duration-200 hover:bg-gray-800 hover:shadow-lg hover:-translate-y-0.5 hover:shadow-gray-600/30" title="payment" href="{% url 'signup' %}">se connecter
+                    <svg aria-hidden="true" viewBox="0 0 10 10" height="10" width="10" fill="none" class="mt-0.5 ml-2 -mr-1 stroke-white stroke-2">
+                        <path d="M0 5h7" class="transition opacity-0 group-hover:opacity-100"></path>
+                        <path d="M1 1l4 4-4 4" class="transition group-hover:translate-x-[3px]"></path>
+                    </svg>
+                </a>
+            </div>
+        </div>
+        
+        <div class="row-span-2 col-span-1 sm:col-span-2 md:col-span-2 lg:col-span-2 col-start-1 sm:col-start-2 md:col-start-3 lg:col-start-6 max-[1452px]:m-24 row-start-2">
+            <div class=" bg-blue-100 rounded-md m-1 border-4 border-orange-500">
+                <p>Lorem ipsum </p>
+            </div>
+        </div>
+        <div class="max-[1452px]:hidden col-start-1 sm:col-start-2 md:col-start-3 lg:col-start-2 row-start-4 py-16 z-1">
+            <div class=" bg-[url(../static/img/ndole.jpg)] bg-cover bg-center w-40 h-40 bg-blue-100 rounded-md m-1 border-4 border-orange-500" data-aos="fade-up" data-aos-delay="100"></div>
+        </div>
+        <div class="max-[1452px]:hidden  col-start-1 sm:col-start-2 md:col-start-3 lg:col-start-3 row-start-4 z-1">
+            <div class="bg-[url(../static/img/images.jpeg)] bg-cover bg-center w-40 h-40 bg-blue-100 rounded-md m-1 border-4 border-orange-500" data-aos="fade-down" data-aos-delay="200"></div>
+        </div>
+        <div class="max-[1452px]:hidden  col-start-1 sm:col-start-2 md:col-start-3 lg:col-start-4 row-start-4 py-16 z-1">
+            <div class="bg-[url(../static/img/sddefault.jpg)] bg-cover bg-center w-40 h-40 bg-blue-100 rounded-md m-1 border-4 border-orange-500" data-aos="fade-up" data-aos-delay="100"></div>
+        </div>
+        <div class="max-[1452px]:hidden  col-start-1 sm:col-start-2 md:col-start-3 lg:col-start-5 row-start-4 z-1">
+            <div class="bg-[url(../static/img/poulet_DG.jpg)] bg-cover bg-center w-40 h-40 bg-blue-100 rounded-md m-1 border-4 border-orange-500" data-aos="fade-down" data-aos-delay="200"></div>
+        </div>
+    </div>
+</section>
+<section>
+
+    <section class="py-20 bg--red-100 to-yellow-500/30" id="temoignages">
+        <div class="container mx-auto px-">
+            <h2 class="text-3xl font-bold text-white text-center mb-12" data-aos="fade-up">Avis Clients</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8" x-data="{ activeTestimonial: 0 }" data-aos="fade-right">
+                <!-- Témoignage Principal -->
+                <div class="md:col-span-2 relative group h-96 rounded-3xl overflow-hidden transition-transform duration-500 hover:scale-[0.98] ">
+                    <div class="absolute inset-0 bg-black/40 backdrop-blur-sm p-8 flex flex-col justify-end">
+                        <div class="text-white space-y-4">
+                            <div class="text-5xl text-yellow-300 opacity-80">“</div>
+                            <p class="text-lg italic">"Le restaurant offre une expérience culinaire exceptionnelle, chaque plat est une véritable explosion de saveurs!"</p>
+                            <div class="flex items-center space-x-4">
+                                <img src="client1.jpg" alt="Client" class="w-12 h-12 rounded-full border-2 border-yellow-300">
+                                <div>
+                                    <h4 class="font-bold">Njoko Yves</h4>
+                                    <p class="text-sm text-yellow-200">Client régulier chez 'Le Gourmet'</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <img src="restaurant1.jpg" alt="Restaurant" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500">
+                </div>
+    
+                <!-- Liste des Témoignages -->
+                <div class="space-y-6">
+                    <!-- Carte Témoignage 1 -->
+                    <div class="bg-black/40  backdrop-blur-sm p-6 rounded-2xl border-l-4 border-yellow-300 transform hover:-translate-y-2 transition-all duration-300 cursor-pointer">
+                        <div class="flex items-start space-x-4">
+                            <img src="client2.jpg" alt="Client" class="w-14 h-14 rounded-full">
+                            <div class="flex-1">
+                                <h4 class="font-bold text-white mb-2">Kignie Le Prince</h4>
+                                <p class="text-gray-300 text-sm line-clamp-3">"Un service rapide et chaleureux, la nourriture est délicieuse et toujours fraîche. Je reviendrai sans hésiter!"</p>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <!-- Carte Témoignage 2 -->
+                    <div class="bg-black/40  backdrop-blur-sm p-6 rounded-2xl border-l-4 border-yellow-300 transform hover:-translate-y-2 transition-all duration-300 cursor-pointer">
+                        <div class="flex items-start space-x-4">
+                            <div class="relative">
+                                <img src="client3.jpg" alt="Client" class="w-14 h-14 rounded-full">
+                                <div class="absolute -bottom-1 -right-1 bg-yellow-300 text-black px-2 py-1 rounded-full text-xs">
+                                    <i class="fas fa-star"></i> 5.0
+                                </div>
+                            </div>
+                            <div class="flex-1">
+                                <h4 class="font-bold text-white mb-2">Njiembokoue DImitry</h4>
+                                <p class="text-gray-300 text-sm line-clamp-3">"Une ambiance parfaite pour un dîner en famille. Les plats sont généreux et le service irréprochable."</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+{% endblock %}

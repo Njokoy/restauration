@@ -40,7 +40,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'App'
+    'App',
+    'accounts',
+    'reservation',
+    'commande'
 ]
 
 MIDDLEWARE = [
@@ -122,6 +125,7 @@ USE_TZ = True
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 MEDIA_URL = '/media/'  # URL pour accéder aux fichiers médias
+AUTH_USER_MODEL = 'accounts.User'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  # Dossier où stocker les fichiers
 
 

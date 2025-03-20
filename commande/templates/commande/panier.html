@@ -1,0 +1,45 @@
+{% extends 'resto.html' %}
+{% block content %}
+<section class="flex items-center ">
+    <!-- CONTENU DU PANIER -->
+    <div class="container mx-auto p-6">
+        {% if items %}
+            <table class="w-full bg-white shadow-md rounded-lg overflow-hidden">
+                <thead class="bg-gray-200">
+                    <tr>
+                        <th class="p-4 text-left">Repas</th>
+                        <th class="p-4">Quantité</th>
+                        <th class="p-4">Prix</th>
+                        <th class="p-4">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in items %}
+                    <tr class="border-b">
+                        <td class="p-4 flex items-center">
+                            <img src="{{ item.meal.image.url }}" class="w-16 h-16 rounded-md mr-4">
+                            <span class="text-gray-700">{{ item.meal.nom }}</span>
+                        </td>
+                        <td class="p-4 text-center">{{ item.quantite }}</td>
+                        <td class="p-4 text-center text-orange-500">{{ item.meal.prix }}€</td>
+                        <td class="p-4 text-center">
+                            <a href="{% url 'supprimer_du_panier' item.id %}" class="text-red-500 hover:text-red-700">🗑 Supprimer</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+            <div class="flex justify-between items-center mt-6">
+                <span class="text-xl font-semibold text-gray-800">Total: {{ total }}€</span>
+                <a href="{% url 'passer_commande' %}" class="bg-green-500 text-white px-6 py-3 rounded-lg hover:bg-green-600">
+                    ✅ Valider la Commande
+                </a>
+            </div>
+        {% else %}
+            <p class="text-center text-gray-600 text-lg">Votre panier est vide.</p>
+        {% endif %}
+    </div>
+</section>
+
+{% endblock %}

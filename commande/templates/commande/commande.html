@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Commande Confirmée</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 flex items-center justify-center h-screen">
+
+    <div class="bg-white p-6 rounded-lg shadow-lg text-center">
+        <h1 class="text-3xl font-bold text-green-600">✅ Commande Validée !</h1>
+        <p class="text-gray-600 mt-2">Merci pour votre commande. Nous la préparons avec soin.</p>
+        <a href="{% url 'historique_commandes' %}" class="mt-4 inline-block bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-600">
+            Voir l'historiques
+        </a>
+    </div>
+
+</body>
+</html>

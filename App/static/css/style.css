@@ -2,3 +2,22 @@ h1 {
     color: blue;
     text-align: center;
 }
+.ft{
+    background-image: url(../img/eru.jpg);
+}
+/* From Uiverse.io by MikeAndrewDesigner */ 
+
+.parent {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    grid-column-gap: 4px;
+    grid-row-gap: 4px;
+    }
+    
+    .div1 { grid-area: 2 / 3 / 5 / 5; }
+    .div2 { grid-area: 6 / 2 / 7 / 6; }
+    .div3 { grid-area: 3 / 1 / 4 / 3; }
+    .div4 { grid-area: 3 / 5 / 4 / 7; }
+    .div5 { grid-area: 1 / 5 / 2 / 7; }
+    

@@ -1,0 +1,35 @@
+{% extends 'resto.html' %}
+
+{% load static %}
+    {% block content %}
+
+    <!-- MENU -->
+    <div class="container mx-auto p-6">
+        <h2 class="text-3xl font-semibold text-gray-800 mb-6">Découvrez notre menu</h2>
+
+        <!-- GRID DES REPAS -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {% for meal in meals %}
+            <div class="bg-white rounded-lg shadow-md hover:shadow-lg transition">
+                <img src="{{ meal.image.url }}" alt="{{ meal.nom }}" class="w-full rounded-lg h-48 object-cover">
+                <div class="p-4">
+                    <h3 class="text-xl text-center font-bold text-gray-800">{{ meal.nom }}</h3>
+                    <p class="text-gray-600 text-center">{{ meal.description|truncatewords:15 }}</p>
+                    <div class="flex flex-col justify-between items-center mt-4">
+                        <span class="text-lg font-semibold text-orange-500">{{ meal.prix }}Fcfa</span>
+                        <div class="flex flex-col ">
+                            <a href="{% url 'ajouter_au_panier' meal.id %}" class="bg-blue-500 text-white my-2 px-4 py-2 rounded-lg hover:bg-blue-600">
+                                ➕ Ajouter
+                            </a>
+                            <a href="{% url 'passer_commande' %}?meal={{ meal.id }}" class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600">
+                                consulter panier
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    
+    {% endblock %}

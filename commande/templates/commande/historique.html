@@ -1,0 +1,34 @@
+{% extends 'resto.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="container mx-auto p-6">
+        <h2> liste de plat commande </h2>
+        {% for commande in commandes %}
+        <div class="bg-white p-4 rounded-lg shadow-md mb-4">
+            <h3 class="text-lg font-bold text-gray-800">Commande du {{ commande.date_commande }}</h3>
+            <p class="text-gray-600">Statut: {{ commande.statut }}</p>
+            <p><a href="{% url 'annuler_reservation' reservation.id %}" class="text-red-500 hover:text-red-700">🗑 Supprimer</a></p>
+        </div>
+        {% empty %}
+        <p class="text-gray-600 text-center">Aucune commande passée.</p>
+        {% endfor %}
+    </div>
+
+    <div class="container mx-auto p-6">
+        <h2> liste de plat commande </h2>
+        {% for reservation in  reservations %}
+        <div class="bg-white p-4 rounded-lg shadow-md mb-4">
+            <h3 class="text-lg font-bold text-gray-800">nom du client :{{ reservation.nom_client }}</h3>
+            <p class="text-gray-600"> a reserve une table pour {{ reservation.nombre_personne }}   pour le {{reservation.date_reservation}}</p>
+            <p><a href="{% url 'annuler_reservation' reservation.id %}" class="text-red-500 hover:text-red-700">🗑 Supprimer</a></p>
+
+        </div>
+        {% empty %}
+        <p class="text-gray-600 text-center">Aucune table reservée.</p>
+        {% endfor %}
+    </div>
+
+
+
+{% endblock %}

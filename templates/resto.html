@@ -1,0 +1,57 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Client</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 ">
+    
+    <nav class="bg-white shadow-md py-4 px-6 flex justify-between">
+        <h1 class="text-2xl font-bold text-gray-800">🍽️ Le Gourmet</h1>
+        {% if user.is_authenticated %}
+            <a href="{% url 'voir_panier' %}" class="bg-orange-500 text-white px-4 py-2 rounded-lg hover:bg-orange-600">
+                🛒 Voir le Panier
+            </a>
+        {% else %}
+            <a href="{% url 'login' %}" class="bg-orange-500 text-white px-4 py-2 rounded-lg hover:bg-orange-600">
+                 Se Connecter
+            </a>
+        {% endif %}
+    </nav>
+        <!-- HEADER -->
+    <div class="flex">
+    <!-- 🌟 NAVIGATION LATÉRALE DROITE -->
+    <aside class="w-1/4 bg-white shadow-lg p-6 flex flex-col justify-between h-screen sticky top-0">
+        <div>
+            <h2 class="text-xl font-bold text-gray-800 mb-6">🚀 Actions Rapides</h2>
+            <nav class="space-y-4">
+                <a href="{% url 'reservation_create' %}" class="block bg-blue-500 text-white py-3 px-4 rounded-lg text-center hover:bg-blue-600 ">
+                    📅 Réserver une table
+                </a>
+                <a href="{% url 'menu' %}" class="block bg-green-500 text-white py-3 px-4 rounded-lg text-center hover:bg-green-600">
+                    🍽 Commander un plat
+                </a>
+                <a href="{% url 'voir_panier' %}" class="block bg-orange-500 text-white py-3 px-4 rounded-lg text-center hover:bg-orange-600">
+                    🛒 Voir mon panier
+                </a>
+                <a href="{%  url 'historique_commandes' %}" class="block bg-orange-500 text-white py-3 px-4 rounded-lg text-center hover:bg-orange-600">
+                    📜 historique 
+                </a>
+            </nav>
+        </div>
+        <p class="text-sm text-gray-500 mt-6">Connecté en tant que <span class="font-semibold">{{ user.username }}</span></p>
+    </aside>
+
+    <!-- 🌟 CONTENU PRINCIPAL -->
+    <main class="flex-1 p-6 flex flex-col gap-8">
+        {% block content %}
+
+        {% endblock %}
+    </main>
+    </div>
+
+</body>
+</html>

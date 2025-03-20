@@ -1,0 +1,97 @@
+{% load static %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Client</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 ">
+    
+    <nav class="bg-white shadow-md py-4 px-6 flex justify-between">
+        <h1 class="text-2xl font-bold text-gray-800">🍽️ Le Gourmet</h1>
+        {% if user.is_authenticated %}
+            <a href="{% url 'voir_panier' %}" class="bg-orange-500 text-white px-4 py-2 rounded-lg hover:bg-orange-600">
+                🛒 Voir le Panier
+            </a>
+        {% else %}
+            <a href="{% url 'login' %}" class="bg-orange-500 text-white px-4 py-2 rounded-lg hover:bg-orange-600">
+                 Se Connecter
+            </a>
+        {% endif %}
+    </nav>
+        <!-- HEADER -->
+    <div class="flex">
+    <!-- 🌟 NAVIGATION LATÉRALE DROITE -->
+    <aside class="w-1/4 bg-white shadow-lg p-6 flex flex-col justify-between">
+        <div>
+            <h2 class="text-xl font-bold text-gray-800 mb-6">🚀 Actions Rapides</h2>
+            <nav class="space-y-4">
+                <a href="{% url 'reservation_create' %}" class="block bg-blue-500 text-white py-3 px-4 rounded-lg text-center hover:bg-blue-600">
+                    📅 Réserver une table
+                </a>
+                <a href="{% url 'menu' %}" class="block bg-green-500 text-white py-3 px-4 rounded-lg text-center hover:bg-green-600">
+                    🍽 Commander un plat
+                </a>
+                <a href="{% url 'voir_panier' %}" class="block bg-orange-500 text-white py-3 px-4 rounded-lg text-center hover:bg-orange-600">
+                    🛒 Voir mon panier
+                </a>
+            </nav>
+        </div>
+        <p class="text-sm text-gray-500 mt-6">Connecté en tant que <span class="font-semibold">{{ user.username }}</span></p>
+    </aside>
+
+    <!-- 🌟 CONTENU PRINCIPAL -->
+    <main class="flex-1 p-6 flex flex-col gap-8">
+        
+        <!-- 🥘 SECTION DES REPAS -->
+        <section>
+            <h2 class="text-2xl font-bold text-gray-800 mb-4">🍕 Nos Plats du Moment</h2>
+            <div class="flex space-x-6 overflow-x-auto pb-4">
+                {% for meal in meals|slice:":6" %}
+                <div class="bg-white shadow-lg rounded-lg overflow-hidden w-64">
+                    <img src="{{ meal.image.url }}" alt="{{ meal.nom }}" class="h-40 w-full object-cover">
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold text-gray-800">{{ meal.nom }}</h3>
+                        <p class="text-gray-600">{{ meal.description|truncatewords:10 }}</p>
+                        <div class="flex justify-between items-center mt-3">
+                            <span class="text-orange-500 font-bold">{{ meal.prix }}€</span>
+                            <a href="{% url 'menu' %}" class="bg-blue-500 text-white px-3 py-1 rounded-md hover:bg-blue-600">Ajouter</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+
+        <!-- 📸 SECTION IMAGES & POINTS FORTS -->
+        <section class="grid grid-cols-3 gap-4">
+            <div class="col-span-2 relative">
+                <img src="{% static 'images/resto1.jpg' %}" class="h-64 w-full object-cover rounded-lg shadow-lg">
+                <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+                    <h3 class="text-white text-2xl font-bold">🍽️ Une Expérience Gastronomique Unique</h3>
+                </div>
+            </div>
+            <div class="col-span-1 bg-orange-500 text-white p-6 rounded-lg shadow-lg flex flex-col justify-center">
+                <h3 class="text-xl font-bold">⭐ Service Rapide et Qualité</h3>
+                <p class="mt-2">Nos chefs cuisiniers préparent des plats délicieux avec des ingrédients frais et locaux.</p>
+            </div>
+            <div class="col-span-1 bg-blue-500 text-white p-6 rounded-lg shadow-lg flex flex-col justify-center">
+                <h3 class="text-xl font-bold">🏠 Un Cadre Convivial</h3>
+                <p class="mt-2">Profitez d’une ambiance chaleureuse pour partager un bon repas avec vos proches.</p>
+            </div>
+            <div class="col-span-2 relative">
+                <img src="{% static 'images/resto2.jpg' %}" class="h-64 w-full object-cover rounded-lg shadow-lg">
+                <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+                    <h3 class="text-white text-2xl font-bold">🌟 Des Avis Clients Exceptionnels</h3>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    </div>
+
+</body>
+</html>
